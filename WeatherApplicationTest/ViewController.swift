@@ -13,11 +13,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        getWeather()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func getWeather() {
+        let parameter: [String : String] = ["q" : "London,uk",
+                                         "appid" : "b6907d289e10d714a6e88b30761fae22"]
+        WebService.GET(url: WebService.GET_WEATHER, param: parameter, headers: [:]) { (json) in
+            print(json)
+        }
     }
 
 

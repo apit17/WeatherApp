@@ -12,6 +12,7 @@
 		48495B9A1FF4AFB90056C7CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48495B981FF4AFB90056C7CD /* Main.storyboard */; };
 		48495B9C1FF4AFB90056C7CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48495B9B1FF4AFB90056C7CD /* Assets.xcassets */; };
 		48495B9F1FF4AFB90056C7CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48495B9D1FF4AFB90056C7CD /* LaunchScreen.storyboard */; };
+		48495BA71FF4B1340056C7CD /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48495BA61FF4B1340056C7CD /* WebService.swift */; };
 		A5AF80B6BBF9A559F289646C /* Pods_WeatherApplicationTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94E69C2033C471027A30E4A9 /* Pods_WeatherApplicationTest.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +25,7 @@
 		48495B9B1FF4AFB90056C7CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		48495B9E1FF4AFB90056C7CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		48495BA01FF4AFB90056C7CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48495BA61FF4B1340056C7CD /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		94E69C2033C471027A30E4A9 /* Pods_WeatherApplicationTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApplicationTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD1821F1D31402C532A185B1 /* Pods-WeatherApplicationTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApplicationTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherApplicationTest/Pods-WeatherApplicationTest.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,6 +69,7 @@
 				48495B9B1FF4AFB90056C7CD /* Assets.xcassets */,
 				48495B9D1FF4AFB90056C7CD /* LaunchScreen.storyboard */,
 				48495BA01FF4AFB90056C7CD /* Info.plist */,
+				48495BA61FF4B1340056C7CD /* WebService.swift */,
 			);
 			path = WeatherApplicationTest;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48495BA71FF4B1340056C7CD /* WebService.swift in Sources */,
 				48495B971FF4AFB90056C7CD /* ViewController.swift in Sources */,
 				48495B951FF4AFB90056C7CD /* AppDelegate.swift in Sources */,
 			);
