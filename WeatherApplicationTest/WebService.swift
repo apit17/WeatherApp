@@ -13,6 +13,7 @@ import UIKit
 class WebService: NSObject {
     static var manager: SessionManager!
     static let GET_WEATHER = "http://samples.openweathermap.org/data/2.5/weather"
+    static let GET_ICON = "http://openweathermap.org/img/w/"
     
     
     /// Function for get json from service using get method
@@ -43,3 +44,4 @@ class WebService: NSObject {
         }
     }
 }
+

@@ -9,5 +9,6 @@ target 'WeatherApplicationTest' do
 
 pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
 pod 'Alamofire', '~> 4.3.0’
+pod 'SDWebImage', '~>3.7'
 
 end
