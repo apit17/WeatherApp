@@ -12,7 +12,7 @@ import UIKit
 
 class WebService: NSObject {
     static var manager: SessionManager!
-    static let GET_WEATHER = "http://samples.openweathermap.org/data/2.5/weather"
+    static let GET_WEATHER = "http://api.openweathermap.org/data/2.5/forecast?q=London,uk&appid=ffe9d09a23f978799dd456f513e282fd"
     static let GET_ICON = "http://openweathermap.org/img/w/"
     
     
