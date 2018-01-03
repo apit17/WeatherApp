@@ -50,13 +50,14 @@ class ViewController: UIViewController {
         chooseCityTF.inputAccessoryView = toolBar
         collectionView.backgroundColor = UIColor.clear
         getWeather(city: "Bandung")
-        loadCity()
     }
 
+    
+    /// Function connect to webservice
+    ///
+    /// - Parameter city: parameter for get weather data from API
     func getWeather(city: String) {
         let url = "http://api.openweathermap.org/data/2.5/forecast?q=\(city)&appid=ffe9d09a23f978799dd456f513e282fd"
-        let parameter: [String : String] = ["q" : "London,uk",
-                                         "appid" : "b7e392e48e61eb72270e9ab4c387448a"]
         WebService.GET(url: url, param: [:], headers: [:]) { (json) in
             print(json)
             let listWeather = json["list"].arrayValue
@@ -108,6 +109,9 @@ class ViewController: UIViewController {
         getWeather(city: chooseCityTF.text!)
     }
     
+    /// Function for loading view after loaded data from API
+    ///
+    /// - Parameter index: index list array of weather
     func loadLayout(index: Int) {
         let weather = self.weather[index]
         let url = URL(string: WebService.GET_ICON + weather.iconWeather + ".png")
@@ -122,16 +126,31 @@ class ViewController: UIViewController {
         changeBackground(weatherCode: weather.weatherId)
     }
     
+    /// Function for formatting kelvin degree to celcius
+    ///
+    /// - Parameter kelvin: temperature kelvin get from response API
+    /// - Returns: convert to celcius with integer type
     func getCelcius(kelvin: Double) -> Int {
         let celcius = kelvin - 273.15
         return Int(celcius)
     }
+    
+    /// Function for adding degree to label of temperature
+    ///
+    /// - Parameter degree: Degree of temperature when get response API
+    /// - Returns: return result of adding degree symbols for show to UI
     func degreeFormatter(degree: Int) -> String {
         let tempString = String(degree) + "&deg;"
         let result = tempString.replacingOccurrences(of: "&deg;", with: "\u{00B0}")
         return result
     }
     
+    /// Function for formatting date, that's get from response API
+    ///
+    /// - Parameters:
+    ///   - date: parameter date obtained from the conversion of unix number obtained from API response
+    ///   - source: parameter source for make condition
+    /// - Returns: return is date with string type
     func dateFormatter(date: Date, source: String) -> String {
         if source == "view" {
             let formatter = DateFormatter()
@@ -146,6 +165,9 @@ class ViewController: UIViewController {
         }
     }
     
+    /// Function for change background colour
+    ///
+    /// - Parameter weatherCode: parameter weather code from API, this is for make condition when change colour
     func changeBackground(weatherCode: Int) {
         switch weatherCode {
         case 300...321:
@@ -163,6 +185,10 @@ class ViewController: UIViewController {
         }
     }
     
+    /// Function for converting color by hex code
+    ///
+    /// - Parameter hex: parameter hex for convert
+    /// - Returns: return color by hex code
     func hexStringToUIColor (hex:String) -> UIColor {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         
@@ -187,6 +213,7 @@ class ViewController: UIViewController {
     
 }
 
+// MARK: - CollectionView Delegate and DataSource
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -209,6 +236,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         loadLayout(index: indexPath.item)
     }
 }
+// MARK: - CollectionView Delegate and DataSource
 extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -218,13 +246,15 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = UILabel(frame: CGRect(x:0,y:0, width:pickerView.frame.width-20,height:50))
-        label.text = city[row]
+        let sortedArray = city.sorted { $0.localizedCaseInsensitiveCompare($1) == ComparisonResult.orderedAscending }
+        label.text = sortedArray[row]
         label.font = UIFont.systemFont(ofSize: 16)
         label.textAlignment = NSTextAlignment.center
         return label
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        chooseCityTF.text = city[row]
+        let sortedArray = city.sorted { $0.localizedCaseInsensitiveCompare($1) == ComparisonResult.orderedAscending }
+        chooseCityTF.text = sortedArray[row]
     }
 }
 
